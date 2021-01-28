@@ -114,9 +114,12 @@ function buildCharts(sample) {
 
     // 9. Create the layout for the bar chart.
     var barLayout = {
-      title: "Top Ten Bacteria Cultures Found",
+      title: "<b>Top Ten Bacteria Cultures Found</b>",
       xaxis: {title: "Sample Values" },
-      yaxis: {title: "OTU IDs" }, 
+      yaxis: {title: "OTU IDs" },
+      width: 450,
+      height: 400, 
+      font: {family: "Courier New", color: "steelblue"}
     };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout)
@@ -141,6 +144,9 @@ function buildCharts(sample) {
       xaxis:{title: "OTU ID"},
       yaxis:{title: "Sample Values"},
       hovermode: "closest",
+      paper_bgcolor: "aliceblue",
+      plot_bgcolor: "aliceblue",
+      font: {family: "Courier New", color: "black"}
     };
 
     // 3. Use Plotly to plot the data with the layout.
@@ -149,7 +155,7 @@ function buildCharts(sample) {
     // 4. Create the trace for the gauge chart. 
 
     let filteredObj = data.metadata.filter(obj => obj.id == sample)[0]
-    let washFrequency = parseInt(filteredObj.wfreq)
+    let washFrequency = parseFloat(filteredObj.wfreq)
 
     var gaugeData = [{
       type: "indicator",
@@ -174,8 +180,7 @@ function buildCharts(sample) {
     var gaugeLayout = { 
       width: 400,
       height: 400,
-      paper_bgcolor: "aliceblue"
-
+      font: {family: "Courier New", color: "steelblue"},
     };
 
     // 6. Use Plotly to plot the gauge data and layout.
